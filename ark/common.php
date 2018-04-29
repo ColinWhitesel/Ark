@@ -34,4 +34,32 @@
 
     return $sqlResults;
   }
+  
+  function insertUpdateDatabase($sql){
+	$servername = 'localhost';
+    $username = 'root';
+    $password = '';
+	$dbname = "ark";
+
+    // Create the connection variable
+    $conn = null;
+
+    // Attempt to create a PDO to interact with the DBMS
+    try{
+      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+      //$conn -> exec();
+
+      $stmt = $conn -> prepare($sql);
+      $stmt -> execute();
+    }
+    catch (PDOException $e){
+      // If PDO fails, throw error.
+      echo $sql . "<br />" . $e -> getMessage();
+    }
+
+    // Clear the connection, using "null"
+    $conn = null;
+  }
 ?>

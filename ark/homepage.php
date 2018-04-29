@@ -12,9 +12,9 @@
 		echo "Are you lost? Please return to the zoo. (zoo.php)";
 	}
 	*/
-	$userName = "colin";
+	$userName = "trevor";
 	
-	//get user's animals
+	//get user's animalsS
 	$sqlUsersAnimals = "SELECT * From animals WHERE user=\"" . $userName . "\"";
 	$usersAnimals = queryDatabase($sqlUsersAnimals);
 
@@ -42,8 +42,8 @@
 			
 			echo "</ul>";
 			
-			echo "<button type=\"button\">Update</button>";
-			echo "<button type=\"button\">Delete</button>";
+			echo "<button type=\"button\" onclick=\"update(" . $usersAnimals[$i]['id'] . ")\">Update</button>";
+			echo "<button type=\"button\" onclick=\"remove(" . $usersAnimals[$i]['id'] . ")\">Delete</button>";
 		echo "</div>";
 	}
 		
@@ -58,6 +58,12 @@
 		unset($length);
 	}
 
+	function addSession($animalID)
+	{
+		$_SESSION['id'] = $animalID;
+	}
+
 ?>
+
 
 <?php include("bottom.html"); ?>
