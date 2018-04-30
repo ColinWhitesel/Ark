@@ -14,6 +14,6 @@ $password = $_POST["password"];
 
 $NewUserIntoDatabaseSQL = "INSERT INTO users (user, hpass) VALUES (" . $user . "," . $password . ")";
 
-$response = PDOCall($NewUserIntoDatabaseSQL);
+$response = insertUpdateDatabase($NewUserIntoDatabaseSQL);
 SendJSON($response);
 ?>

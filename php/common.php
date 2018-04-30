@@ -1,61 +1,65 @@
 <?php
-/*
-  CS 270 - Group Project
-  ARK (Animal Record Keeper)
-  Trevor D. Brown, Jamie Thomas, Colin Whitesel, and Brian Bulka
+  function queryDatabase($sql){
+    $servername = 'localhost';
+    $username = 'root';
+    $password = 'C0mputing2!';
+	   $dbname = "ark";
+	//$SQL ="SELECT name, alias, origin, gender, alignment FROM supers ORDER BY name";
 
-  common.php - common functions for all php pages of the project.
-*/
+    // Create the connection variable
+    $conn = null;
 
- // PDOCall($database, $SQLStatement) - offers a convenient way for PDO calls to be made to the database
- function PDOCall($database, $SQLStatement){
-   // Prepare PDO
-   // MySQL Connection Information
-   $host = 'localhost';
-   $username = 'root';
-   $password = '';
+    // Prepare variable that will be returned.
+    $sqlResults = [];
 
-   // Create the connection variable
-   $connection = null;
+    // Attempt to create a PDO to interact with the DBMS
+    try{
+      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-   // Use Database SQL
-   $UseDatabaseSQL = "USE ark";
+      //$conn -> exec();
 
-   // Prepare variable that will be returned.
-   $response_data = [];
+      $stmt = $conn -> prepare($sql);
+      $stmt -> execute();
 
-   // Attempt to create a PDO to interact with the DBMS
-   try{
-     $connection = new PDO("mysql:host=$server;", $username, $password);
-     $connection -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $sqlResults = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $e){
+      // If PDO fails, throw error.
+      echo $sql . "<br />" . $e -> getMessage();
+    }
 
-     $connection -> exec($UseDatabaseSQL);
+    // Clear the connection, using "null"
+    $conn = null;
 
-     $query = $connection -> prepare($SQLStatement);
-     $query -> execute();
+    return $sqlResults;
+  }
 
-     while ($row = $query -> fetch(PDO::FETCH_ASSOC)){
-       foreach ($row as $value){
-         array_push($response_data, $value);
-       }
-     }
-   }
-   catch (PDOException $e){
-     // If PDO fails, throw error.
-     echo $sql . "<br />" . $e -> getMessage();
-   }
+  function insertUpdateDatabase($sql){
+	   $servername = 'localhost';
+    $username = 'root';
+    $password = 'C0mputing2!';
+	   $dbname = "ark";
 
-   // Clear the connection, using "null"
-   $connection = null;
+    // Create the connection variable
+    $conn = null;
 
-   return $response_data;
- }
+    // Attempt to create a PDO to interact with the DBMS
+    try{
+      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
- // SendJSON($data) - provides a convenient way for JSON responses to be sent to the frontend.
- function SendJSON($data){
-   // Send the data back to frontend, via JSON.
-   header('Content-Type: application/json');
-   echo json_encode($data);
- }
+      //$conn -> exec();
 
+      $stmt = $conn -> prepare($sql);
+      $stmt -> execute();
+    }
+    catch (PDOException $e){
+      // If PDO fails, throw error.
+      echo $sql . "<br />" . $e -> getMessage();
+    }
+
+    // Clear the connection, using "null"
+    $conn = null;
+  }
 ?>
