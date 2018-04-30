@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form method="post" id="EditForm">
+<div class="editAnimalData">
+	<legend>Edit Animal Information</legend>
+	<div class="editAnimalData">
+		ID: <input type="number" name="animalID" min="1" max="200" value="$currAnimalID"> <br>
+		USER: <input type="number" name="userID" min="1" max="200" value="$currUserID"> <br>
+		SPECIES: <input type="text" name="species" value="$currSpecies"> <br>
+		NAME: <input type="text" name="animalName" value="$currName"> <br>
+		SEX (opt): <input type="text" name="sex" value="$currSex"> <br>
+		COLOR (opt): <input type="text" name="color" value="$currColor"> <br>
+		BIRTHDATE (opt): <input type="date" name="birthdate" value="$currBDate"> <br>
+		
+		<button type="submit" name="EditAnimal">Submit Changes</button>
+
+	</div>
+</div>
+</form>
+
+<?php
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "myDB";
+
+$animalID=$_POST['animalID'];
+$userID=$_POST['userID'];
+$species=$_POST['species'];
+$animalName=$_POST['animalName'];
+$sex=$_POST['sex'];
+$color=$_POST['color'];
+$birthdate=$_POST['birthdate'];
+
+$getAnimalID = "SELECT ID FROM animals WHERE ID=24";
+$getUserID = "SELECT USER FROM animals WHERE ID=24";
+$getSpecies = "SELECT SPECIES FROM animals WHERE ID=24";
+$getName = "SELECT NAME FROM animals WHERE ID=24";
+$getSex = "SELECT SEX FROM animals WHERE ID=24";
+$getColor = "SELECT COLOR FROM animals WHERE ID=24";
+$getBDate = "SELECT BIRTHDATE FROM animals WHERE ID=24";
+$currAnimalID = $conn->query($getAnimalID);
+$currUserID = $conn->query($getUserID);
+$currSpecies = $conn->query($getSpecies);
+$currName = $conn->query($getName);
+$currSex = $conn->query($getSex);
+$currColor = $conn->query($getColor);
+$currBDate = $conn->query($getBDate);
+	
+if(isset($_POST['EditAnimal']))
+{
+	$sql = "INSERT INTO animals (ID, USER, SPECIES, NAME, SEX, COLOR, BIRTHDATE)
+			VALUES ('$animalID',
+			'$userID',
+			'$species',
+			'$animalName',
+			'$sex',
+			'$color',
+			'$birthdate')";		
+	
+	$usedbsql = "USE myDB";
+	
+	try{
+		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$conn->exec($usedbsql);
+		$conn->exec($sql);
+		echo "Table Updated Successfully";
+	}
+	catch(PDOException $e){
+		echo "Connection failed: " . $e->getMessage();
+	}
+
+
+	$conn=null;
+			
+}	
+
+?>
+
+</body>
+</html>
