@@ -10,7 +10,7 @@
             <div class="form-container-content">
                 <p>Please fill in details of your new animal.</p>
 				<form method="post" action="./php/addAnimal.php" id="AddForm">
-					<input type="hidden" name="user" min="1" max="200" value="<?php echo $userID ?>"/>
+					<input type="hidden" name="user" value="<?php echo $userID ?>"/>
 
                     <label>Species</label>
 					<input type="text" name="species" class="form-control"/>

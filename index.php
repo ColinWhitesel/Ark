@@ -20,17 +20,10 @@
 	//get user's animalsS
 	$sqlUsersAnimals = "SELECT * From animals WHERE user=\"" . $userName . "\"";
 	$usersAnimals = queryDatabase($sqlUsersAnimals);
-	/*
-	echo "<div id=\"header\">";
-		echo "<h1> A.R.K. </h1>";
-		echo "<img src=\"images/arkLogo.jpg\" width=\"250\" height=\"80\"> ";
-		echo "<p> Welcome " . $userName . "!</p>";
-	echo "</div>";
-	*/
 
 	echo "<div class=\"wrapper\">";
 
-	echo "<img class=\"index-logo\" src=\"images/arkLogo.jpg\"> ";
+	echo "<img class=\"index-logo\" alt=\"ARK Logo\" src=\"images/arkLogo.jpg\"> ";
 	echo "<div class=\"index-welcome\"> Welcome " . $userName . "!</div>";
 
 	$length = count($usersAnimals);

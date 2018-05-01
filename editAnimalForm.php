@@ -30,7 +30,7 @@
             <div class="form-container-content">
                 <p>Please update the details of your animal.</p>
 				<form method="post" action="./php/editAnimal.php" id="AddForm">
-					<input type="hidden" name="id" min="1" max="200" value="<?php echo $animalID ?>"/>
+					<input type="hidden" name="id" value="<?php echo $animalID ?>"/>
 
                     <label>Species</label>
 					<input type="text" name="species" class="form-control" value="<?php echo $species ?>"/>
