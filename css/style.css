@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    padding: 0;
+    font: 14px sans-serif;
+    background-color: #d9d9db;
+    /*
+    background-image: url('../images/dirt.jpg');
+    background-repeat: repeat;
+    background-size: 50px 50px;
+    */
+}
+
+/*
+    --- top.php ---
+*/
+.navigation-bar {
+    height: 50px;
+    width: 100vw;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.navigation-bar-title {
+    position: absolute;
+    left: 0;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #337ab7;
+    line-height: 50px;
+}
+.navigation-bar-links {
+    position: absolute;
+    right: 0;
+}
+.navigation-link {
+    display: inline-block;
+    height: 30px;
+    padding: 5px 10px !important;
+    margin: 10px 5px;
+}
+/*
+    --- general ---
+*/
+.wrapper { 
+    width: 350px; 
+    margin: 0 auto;
+    padding: 10px 20px; 
+}
+.button {
+    color: #fff;
+    background-color: #337ab7;
+    border: 1px solid #2e6da4;
+    border-radius: 2px;
+    padding: 5px 10px;
+}
+.add-button {
+    display: block;
+    margin: 0 auto; 
+}
+.index-logo {
+    width: 100%;
+    height: auto;
+    border: solid 1px #999;
+    border-radius: 2px;
+}
+.index-welcome {
+    width: 100%;
+    height: auto;
+    padding: 10px 12px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #337ab7;
+    background-color: #fff;
+    border: solid 1px #999;
+    border-radius: 2px;
+    margin: 10px 0;
+}
+.index-add-container {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border: solid 1px #999;
+    border-radius: 2px;
+    padding: 10px;
+    margin: 10px 0;
+}
+.form-container {
+    background-color: #fff;
+    border: solid 1px #999;
+    border-radius: 2px;
+}
+.form-container-header {
+    width:100%;
+    line-height: 20px;
+    padding: 8px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #337ab7;
+    color: #fff;
+}
+.form-container-content {
+    padding: 8px 10px;
+}
+.animal-card {
+    background-color: #fff;
+    border: solid 1px #999;
+    border-radius: 2px;
+    margin-bottom: 5px;
+}
+.animal-card-header {
+    width:100%;
+    line-height: 20px;
+    padding: 8px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #337ab7;
+    color: #fff;
+}
+.animal-card-content {
+    padding: 8px 10px;
+}
+.animal-card-button {
+    margin-right: 5px;
+}
+
+/*
+    --- bottom.php ---
+*/
+.w3c-container {
+    width: 350px;
+    margin: 10px auto;
+    text-align: center;
+}
